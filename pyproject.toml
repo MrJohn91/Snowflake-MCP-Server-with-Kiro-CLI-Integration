@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snowflake-mcp-server"
+version = "1.0.0"
+description = "MCP Server for Snowflake database integration with Kiro CLI"
+authors = [{name = "Your Name", email = "your.email@example.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp==2.13.0.1",
+    "python-dotenv==1.2.1",
+    "snowflake-connector-python==3.7.0",
+    "flask==3.0.0",
+    "plotly==5.17.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.4.2",
+    "pytest-asyncio==1.2.0",
+    "pytest-mock==3.15.1",
+    "pytest-cov==4.1.0",
+    "httpx==0.28.1",
+    "black==24.3.0",
+    "isort==5.13.2",
+    "mypy==1.8.0",
+]
+
+[project.scripts]
+snowflake-mcp-server = "app.main:main"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=app --cov-report=html --cov-report=term-missing"

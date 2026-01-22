@@ -1,0 +1,22 @@
+# FastMCP dependencies
+fastmcp==2.13.0.1
+python-dotenv==1.2.1
+
+# Snowflake connectivity
+snowflake-connector-python==3.7.0
+
+# Flask for visualization
+flask==3.0.0
+plotly==5.17.0
+
+# Testing dependencies
+pytest==8.4.2
+pytest-asyncio==1.2.0
+pytest-mock==3.15.1
+pytest-cov==4.1.0
+httpx==0.28.1
+
+# Development dependencies
+black==24.3.0
+isort==5.13.2
+mypy==1.8.0
