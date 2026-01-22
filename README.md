@@ -60,9 +60,16 @@ This MCP server bridges the gap between business questions and Snowflake insight
 ## 🛠 Architecture
 
 ```
-Kiro CLI ↔ MCP Server (FastMCP) ↔ Snowflake Database
-                ↕
-        Flask Web Server (Charts/Visualization)
+┌─────────────────┐    ┌──────────────────────┐    ┌─────────────────┐
+│   Kiro CLI      │◄──►│   MCP Server         │◄──►│   Snowflake     │
+│   (Client)      │    │   (FastMCP)          │    │   Database      │
+└─────────────────┘    └──────────────────────┘    └─────────────────┘
+                                │
+                                ▼
+                       ┌──────────────────────┐
+                       │   Flask Web Server   │
+                       │   (Visualization)    │
+                       └──────────────────────┘
 ```
 
 ### Components
@@ -71,6 +78,8 @@ Kiro CLI ↔ MCP Server (FastMCP) ↔ Snowflake Database
 - **Flask Server**: Generates and serves interactive visualizations  
 - **Query Engine**: Translates natural language to optimized SQL
 - **Chart Generator**: Converts query results to visual formats
+
+📋 **[View Detailed Architecture](.kiro/documentation/architecture.md)**
 
 ## 📋 Available Tools
 
