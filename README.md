@@ -3,7 +3,8 @@
 [![Hackathon](https://img.shields.io/badge/Dynamous-Kiro%20Hackathon%202026-blue)](https://github.com/coleam00/dynamous-kiro-hackathon)
 [![Protocol](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-green)](https://modelcontextprotocol.io)
 
-**Ask questions in plain English → Get data from Snowflake → See instant charts**
+**Ask questions in plain English → Get secure Snowflake data → See instant visualizations**
+*An intelligent MCP Server for Kiro CLI that turns natural language into actionable insights.*
 
 ---
 
