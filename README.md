@@ -102,7 +102,11 @@ uv sync
 │   ├── config.py         # Configuration & mock mode
 │   └── mock_data.py      # Simulated data for testing
 ├── charts/               # Generated chart files
+├── skills/               # AI Best Practice Guides
 ├── .kiro/                # Kiro configuration
+│   ├── steering/         # Product context & architecture docs
+│   ├── prompts/          # Workflow prompts
+│   └── settings/         # MCP configuration
 ├── tests/
 │   ├── test_cli_mock.py  # Automation CLI test script
 │   └── test_manual.py    # Interactive test runner
