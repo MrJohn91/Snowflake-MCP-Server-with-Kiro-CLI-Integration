@@ -4,6 +4,7 @@
 [![Protocol](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-green)](https://modelcontextprotocol.io)
 
 **Ask questions in plain English → Get secure Snowflake data → See instant visualizations**
+
 *An intelligent MCP Server for Kiro CLI that turns natural language into actionable insights.*
 
 ---
