@@ -103,7 +103,38 @@
 └─────────────────────────────────────────────────────────┘
 ```
 
-## Security Architecture
+## Security Architecture & Data Governance
+
+### Security-First Design Philosophy
+
+The MCP server implements a **security-first approach** by connecting exclusively to Snowflake's Gold layer, demonstrating enterprise data governance best practices:
+
+**GOLD Schema Only Access** - The MCP server is intentionally restricted to only the GOLD schema:
+
+- **No Raw Data Exposure**: BRONZE and SILVER schemas are completely inaccessible to the MCP server
+- **Curated Views Only**: Only 2 pre-approved views are exposed:
+  - `DAILY_SALES_SUMMARY` - Daily revenue and sales metrics
+  - `CUSTOMER_PRODUCT_AFFINITY_MONTHLY` - Customer behavior analytics
+- **Data Governance**: Raw transactional data remains protected in lower layers
+- **Controlled Analytics**: Business users get insights without accessing sensitive raw data
+
+### Data Layer Security Model
+
+```
+┌─────────────────┐    ┌──────────────────────┐    ┌─────────────────┐
+│   Kiro CLI      │◄──►│   MCP Server         │◄──►│   GOLD Views    │
+│   (Client)      │    │   (Secure Access)    │    │   (Curated)     │
+└─────────────────┘    └──────────────────────┘    └─────────────────┘
+                                                            │
+                                                    ┌─────────────────┐
+                                                    │ BRONZE/SILVER   │
+                                                    │ (Protected)     │
+                                                    └─────────────────┘
+```
+
+This design ensures that AI-powered natural language queries can access business insights while maintaining strict data security and governance controls.
+
+### Application Security
 
 ```
 ┌─────────────────┐    ┌──────────────────────┐    ┌─────────────────┐
@@ -111,8 +142,8 @@
 │                 │    │                      │    │                 │
 │ • Local client  │◄──►│ • Env variables      │◄──►│ • Secure conn   │
 │ • No auth needed│    │ • Input validation   │    │ • Role-based    │
-│                 │    │ • SQL injection      │    │ • Gold layer    │
-│                 │    │   prevention         │    │   only          │
+│                 │    │ • SQL injection      │    │ • GOLD only     │
+│                 │    │   prevention         │    │                 │
 └─────────────────┘    └──────────────────────┘    └─────────────────┘
                                 │
                                 │ Localhost only

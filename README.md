@@ -1,197 +1,154 @@
-# Snowflake MCP Server with Kiro CLI Integration
+# Snowflake MCP Server with Kiro Integration
 
-A custom Model Context Protocol (MCP) server that enables natural language querying of Snowflake databases through Kiro CLI with integrated Flask-based data visualization. Built for the Dynamous Kiro Hackathon 2026.
+[![Hackathon](https://img.shields.io/badge/Dynamous-Kiro%20Hackathon%202026-blue)](https://github.com/coleam00/dynamous-kiro-hackathon)
+[![Protocol](https://img.shields.io/badge/MCP-Model%20Context%20Protocol-green)](https://modelcontextprotocol.io)
 
-## 🎯 Project Overview
-
-This MCP server bridges the gap between business questions and Snowflake insights, making enterprise data accessible through conversational AI. Users can ask questions in natural language via Kiro CLI and receive both data results and interactive visualizations.
-
-### Key Features
-
-- **Natural Language Queries**: Ask business questions without SQL knowledge
-- **Real-time Snowflake Integration**: Direct connection to Gold-layer data
-- **Interactive Visualizations**: Flask-powered charts and graphs
-- **Kiro CLI Integration**: Seamless AI-powered workflow integration
-- **Secure MCP Protocol**: Enterprise-grade security and communication
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Python 3.11 or higher
-- Snowflake account with Gold-layer data access
-- Kiro CLI installed and configured
-
-### Installation
-
-1. **Clone and setup environment:**
-   ```bash
-   git clone <repository-url>
-   cd Hackathon_snowflakemcpserverproject
-   cp .env.example .env
-   ```
-
-2. **Configure Snowflake credentials in `.env`:**
-   ```bash
-   SNOWFLAKE_ACCOUNT=your_account_identifier
-   SNOWFLAKE_USER=your_username
-   SNOWFLAKE_PASSWORD=your_password
-   SNOWFLAKE_WAREHOUSE=your_warehouse
-   SNOWFLAKE_DATABASE=your_database
-   SNOWFLAKE_SCHEMA=GOLD
-   SNOWFLAKE_ROLE=your_role
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Test connection:**
-   ```bash
-   python -m pytest tests/test_connection.py -v
-   ```
-
-5. **Start the MCP server:**
-   ```bash
-   python app/main.py
-   ```
-
-## 🛠 Architecture
-
-```
-┌─────────────────┐    ┌──────────────────────┐    ┌─────────────────┐
-│   Kiro CLI      │◄──►│   MCP Server         │◄──►│   Snowflake     │
-│   (Client)      │    │   (FastMCP)          │    │   Database      │
-└─────────────────┘    └──────────────────────┘    └─────────────────┘
-                                │
-                                ▼
-                       ┌──────────────────────┐
-                       │   Flask Web Server   │
-                       │   (Visualization)    │
-                       └──────────────────────┘
-```
-
-### Components
-
-- **MCP Server**: Handles natural language queries and Snowflake connectivity
-- **Flask Server**: Generates and serves interactive visualizations  
-- **Query Engine**: Translates natural language to optimized SQL
-- **Chart Generator**: Converts query results to visual formats
-
-📋 **[View Detailed Architecture](.kiro/documentation/architecture.md)**
-
-## 📋 Available Tools
-
-### Core MCP Tools
-
-- **`query_snowflake`**: Execute natural language queries against Gold tables
-- **`describe_table`**: Get comprehensive table schema and metadata
-- **`list_tables`**: Discover available tables and data sources
-- **`create_chart`**: Generate interactive visualizations from query results
-- **`get_chart_url`**: Retrieve URLs for generated charts
-
-### Example Usage
-
-```bash
-# Via Kiro CLI
-@prime  # Load project context
-"Show me sales performance by region for Q4"
-"Create a bar chart of top 10 customers by revenue"
-"What are the trending product categories this month?"
-```
-
-## 🧪 Development Workflow
-
-This project follows the Kiro CLI hackathon development pattern:
-
-### Core Development Cycle
-
-1. **Load Context**: `@prime` - Understand current codebase state
-2. **Plan Features**: `@plan-feature` - Create comprehensive implementation plans  
-3. **Execute Plans**: `@execute` - Implement features systematically
-4. **Review Code**: `@code-review` - Maintain code quality and standards
-
-### Project Structure
-
-```
-snowflake-mcp-server/
-├── .kiro/                    # Kiro CLI configuration
-│   ├── steering/            # Project steering documents
-│   ├── prompts/             # Custom workflow prompts
-│   └── documentation/       # Additional project docs
-├── app/                     # Main application code
-│   ├── tools/              # MCP tool implementations
-│   ├── resources/          # MCP resource implementations
-│   ├── flask_app/          # Flask visualization server
-│   └── main.py             # MCP server entry point
-├── tests/                   # Comprehensive test suite
-├── .env.example            # Environment template
-└── requirements.txt        # Python dependencies
-```
-
-## 🎨 Visualization Features
-
-The integrated Flask server provides:
-
-- **Interactive Charts**: Bar, line, pie, and scatter plots
-- **Real-time Updates**: Charts update with new query results
-- **Export Options**: Save charts as PNG, PDF, or interactive HTML
-- **Responsive Design**: Works on desktop and mobile devices
-
-## 🔒 Security
-
-- Environment-based credential management
-- No hardcoded secrets in source code
-- MCP protocol provides secure communication
-- Input validation and SQL injection prevention
-- Localhost-restricted Flask server by default
-
-## 🧪 Testing
-
-```bash
-# Run all tests
-python -m pytest tests/ -v
-
-# Test specific components
-python -m pytest tests/test_tools.py -v
-python -m pytest tests/test_integration.py -v
-
-# Test with coverage
-python -m pytest tests/ --cov=app --cov-report=html
-```
-
-## 📚 Documentation
-
-- [Product Overview](.kiro/steering/product.md) - Project goals and user stories
-- [Technical Architecture](.kiro/steering/tech.md) - System design and tech stack
-- [Project Structure](.kiro/steering/structure.md) - Code organization and conventions
-- [Development Log](DEVLOG.md) - Timeline, decisions, and challenges
-
-## 🏆 Hackathon Submission
-
-This project is built for the **Dynamous Kiro Hackathon 2026** with focus on:
-
-- **Effective Kiro CLI Usage** (20% of score)
-- **Application Quality** (40% of score) 
-- **Documentation** (20% of score)
-- **Innovation** (15% of score)
-- **Presentation** (5% of score)
-
-## 🤝 Contributing
-
-1. Follow the established Kiro CLI workflow patterns
-2. Use the custom prompts in `.kiro/prompts/` for development
-3. Maintain comprehensive test coverage (80%+)
-4. Update documentation for any new features
-5. Follow FastMCP best practices and patterns
-
-## 📄 License
-
-MIT License - Built for the Dynamous Kiro Hackathon 2026
+**Ask questions in plain English → Get data from Snowflake → See instant charts**
 
 ---
 
-**Ready to query your Snowflake data with natural language?** 🚀
+## 🎯 Project Goal
 
-Start with `@prime` to load the project context, then use `@plan-feature` to add new capabilities!
+To bridge the gap between business questions and data insights by allowing users to query secure Snowflake data using plain English and instantly receive interactive visualizations.
+
+---
+
+## 🔴 The Problem
+
+Business users and teams often face friction when trying to get data insights:
+
+- **SQL Barrier:** They don't know how to write complex SQL queries.
+- **Time Lag:** Waiting for analysts to generate reports takes time.
+- **Visualization Gap:** Getting raw data is often not enough; they need to see trends visually.
+
+---
+
+## ✅ The Solution
+
+This project implements a custom **MCP Server** that connects Kiro CLI to Snowflake:
+
+1. **Understand:** Kiro translates natural language into optimized SQL.
+2. **Secure:** Queries are executed against curated **GOLD** views to ensure security and data quality.
+3. **Visualize:** When you request a chart, the server generates interactive **Chart.js** visualizations that open instantly in your browser.
+
+---
+
+## 🎬 How It Works
+
+Instead of writing SQL, you just ask:
+
+> "Show me sales by category"
+
+The server:
+1. Translates your question to SQL
+2. Queries the Snowflake GOLD views
+3. Returns the data in plain English
+
+Then if you want a visualization:
+
+> "Create a bar chart of this data"
+
+A chart opens instantly in your browser.
+
+---
+
+## Quick Start 
+
+### Step 1: Clone & Install
+```bash
+git clone https://github.com/MrJohn91/Snowflake-MCP-Server-with-Kiro-CLI-Integration.git
+cd Snowflake-MCP-Server-with-Kiro-CLI-Integration
+uv sync
+```
+
+> **Note:** Since you don't have my Snowflake credentials, the server automatically uses **mock data** that mirrors the real production schema.
+
+### Step 2: Test with Kiro
+
+1. **Open Kiro:**
+   ```bash
+   kiro .
+   ```
+   *(Kiro automatically detects the MCP configuration)*
+
+2. **Find the chat panel** in Kiro (sidebar or Cmd+L)
+
+3. **Ask questions:**
+   - "What views are available?"
+   - "Show me sales data by category"
+   - "Create a bar chart of revenue"
+   - "Describe the DAILY_SALES_SUMMARY view"
+
+---
+
+## 🔧 MCP Tools
+
+| Tool | What It Does |
+|------|--------------|
+| `snowflake_list_views` | Lists available views in the GOLD schema |
+| `snowflake_describe_view` | Shows columns and data types for a view |
+| `snowflake_query` | Executes SQL queries against Snowflake |
+| `create_chart` | Generates Chart.js visualizations |
+
+---
+
+## 📁 Project Structure
+
+```
+├── src/
+│   ├── main.py           # MCP server & tool definitions
+│   ├── tools/            # Snowflake query logic
+│   ├── visualize.py      # Chart generation
+│   ├── config.py         # Configuration & mock mode
+│   └── mock_data.py      # Simulated data for testing
+├── charts/               # Generated chart files
+├── .kiro/                # Kiro configuration
+├── tests/
+│   ├── test_cli_mock.py  # Automation CLI test script
+│   └── test_manual.py    # Interactive test runner
+├── README.md
+```
+
+---
+
+## 🔐 Mock Mode (How It Works)
+
+When you don't have Snowflake credentials (no `.env` file), the server automatically:
+
+1. Detects missing credentials
+2. Enables **Mock Mode**
+3. Returns realistic sample data that matches the real schema
+
+This lets you test the full workflow without needing database access.
+
+**Mock Data Includes:**
+- 2 Views: `DAILY_SALES_SUMMARY`, `CUSTOMER_PRODUCT_AFFINITY_MONTHLY`
+- 5 Product Categories: Electronics, Garden, Food, Home, Clothing
+- Revenue data for chart generation
+
+---
+
+## ✨ Acknowledgments
+
+This project used the [MCP Skill Builder](skills/mcp-builder-skill.md) from Anthropic to ensure high-quality, compliant MCP server implementation.
+
+---
+
+## ❓ Troubleshooting
+
+**Kiro doesn't see the MCP server?**
+- Make sure you launched Kiro from the project root folder (where `.kiro` exists)
+- Restart Kiro after changing the config
+
+**Tests fail with MFA error?**
+- This happens when real credentials exist. The test script forces mock mode, so this shouldn't occur with `test_mcp_cli.py`
+
+**Chart doesn't open?**
+- Check the `charts/` folder for generated HTML files
+- Open them manually in your browser
+
+---
+
+## 🏆 Built For
+
+Dynamous Kiro Hackathon 2026 - Demonstrating how MCP servers can bridge natural language and enterprise data systems.

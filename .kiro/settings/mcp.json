@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "snowflake-mcp-server": {
+      "command": "uv",
+      "args": [
+        "run",
+        "python",
+        "-m",
+        "src.main"
+      ],
+      "cwd": ".",
+      "env": {},
+      "description": "Snowflake MCP Server for natural language database queries with Chart.js visualizations",
+      "autoApprove": [
+        "snowflake_list_views",
+        "snowflake_query"
+      ]
+    }
+  }
+}

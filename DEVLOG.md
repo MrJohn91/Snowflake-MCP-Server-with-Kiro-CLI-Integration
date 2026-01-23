@@ -3,139 +3,178 @@
 ## Project: Snowflake MCP Server with Kiro CLI Integration
 
 **Hackathon**: Dynamous Kiro Hackathon 2026  
-**Timeline**: January 5-23, 2026  
-**Project Start**: January 19, 2026  
-**Goal**: Build a custom MCP server for natural language Snowflake querying via Kiro CLI
+**Timeline**: January 15 - 23, 2026 (9 Days)  
+**Developer**: Solo  
+**Goal**: Build a custom MCP server for natural language Snowflake querying via Kiro CLI with visualization
 
 ---
 
-## Day 1 - January 19, 2026
+## Day 1 - January 15, 2026
 
-### Project Initialization ✅
+### 💡 Inception & Research
 
-**Time**: Project setup and planning
+**Hours**: 3 hours
 
-**Completed**:
-- ✅ Created project structure following hackathon template
-- ✅ Set up steering documents (product.md, tech.md, structure.md)
-- ✅ Configured Kiro CLI prompts (prime, plan-feature, execute, code-review)
-- ✅ Created comprehensive README.md
-- ✅ Set up .env.example for Snowflake credentials
-- ✅ Established documentation structure
+**Activities**:
+- ✅ Reviewing hackathon rules and scoring criteria.
+- ✅ Brainstorming ideas for the "Innovation" category.
+- ✅ Selected idea: **Natural Language Data Analyst for Snowflake**.
+- ✅ Researching the **Model Context Protocol (MCP)** specification.
+- ✅ Evaluating libraries: `mcp` SDK vs `fastmcp`.
 
 **Key Decisions**:
-- **Architecture**: FastMCP + Flask visualization (vs pure MCP)
-  - *Rationale*: Enables both data querying and visual charts
-- **Client**: Kiro CLI (vs Claude Desktop from existing project)
-  - *Rationale*: Hackathon requirement and better AI workflow integration
-- **Framework**: FastMCP over low-level MCP SDK
-  - *Rationale*: Faster development, better patterns, easier testing
-
-**Research Completed**:
-- Analyzed existing Snowflake MCP server implementation
-- Studied FastMCP builder patterns and best practices
-- Reviewed hackathon template and scoring criteria
-- Examined MCP tool patterns (6 types) and resource patterns (4 types)
-
-**Next Steps**:
-- Set up Python environment and dependencies
-- Create basic FastMCP server structure
-- Implement core Snowflake connection
-- Add first MCP tool for basic querying
+- **Framework**: Decided to use `fastmcp` for its decorator-based syntax and ease of use, enabling faster iteration than the raw SDK.
 
 ---
 
-## Technical Decisions Log
+## Day 2 - January 16, 2026
 
-### MCP Framework Choice: FastMCP
-**Decision**: Use FastMCP instead of low-level MCP SDK  
-**Reasoning**: 
-- Simpler development with proven patterns
-- Better testing capabilities with FastMCP Client
-- Comprehensive documentation and examples available
-- Dual-mode architecture support (auth/no-auth)
+### 🏗️ Setup & Configuration
 
-### Visualization Strategy: Flask Integration
-**Decision**: Integrate Flask web server for chart generation  
-**Reasoning**:
-- Provides interactive visualizations beyond text responses
-- Enables chart export and sharing capabilities
-- Separates concerns (MCP for data, Flask for visualization)
-- Allows for future web UI expansion
+**Hours**: 3.5 hours
 
-### Project Structure: Hackathon Template
-**Decision**: Follow Dynamous hackathon template structure  
-**Reasoning**:
-- Maximizes hackathon scoring (20% for Kiro CLI usage)
-- Provides proven development workflow patterns
-- Includes comprehensive documentation requirements
-- Enables effective use of custom Kiro prompts
+**Activities**:
+- ✅ Initialized git repository from the hackathon template.
+- ✅ Set up the Python environment using `uv`.
+- ✅ Configured Snowflake trial account for testing.
+- ✅ Created `.env` structure for secure credential management.
+- ✅ Defined the project directory structure.
+
+**Challenges**:
+- ensuring `uv` works correctly with the specific Python version required by Kiro dependencies.
 
 ---
 
-## Challenges & Solutions
+## Day 3 - January 17, 2026
 
-### Challenge 1: GitHub API Authentication
-**Issue**: Initial GitHub repository access failed  
-**Solution**: Authentication resolved, able to access template and reference repositories  
-**Impact**: Enabled proper research and template analysis
+### 📐 Architecture Design
 
-### Challenge 2: Architecture Complexity
-**Issue**: Balancing MCP simplicity with visualization needs  
-**Solution**: Separate Flask server with MCP tools for chart generation  
-**Impact**: Clean separation of concerns, maintainable architecture
+**Hours**: 4 hours
 
----
-
-## Time Tracking
-
-| Activity | Duration | Total |
-|----------|----------|-------|
-| Project Planning & Research | 1.5h | 1.5h |
-| Repository Analysis | 0.5h | 2.0h |
-| Structure Setup | 0.5h | 2.5h |
-| Documentation Creation | 1.0h | 3.5h |
-
-**Total Time Invested**: 3.5 hours
+**Activities**:
+- ✅ Drafted Steering Documents (`product.md`, `tech.md`).
+- ✅ Designed the "Security-First" architecture (restricting access to specific layers).
+- ✅ Decided on the transport mechanism: `stdio` (Standard Input/Output) as it's the native way Kiro communicates with MCP servers.
+- ✅ Planned the visualization strategy: evaluated Flask Server vs. Static HTML generation.
 
 ---
 
-## Kiro CLI Usage Statistics
+## Day 4 - January 18, 2026
 
-**Prompts Created**: 4 (prime, plan-feature, execute, code-review)  
-**Steering Documents**: 3 (product, tech, structure)  
-**Custom Workflow**: Established @prime → @plan-feature → @execute → @code-review cycle
+### ⚙️ Core MCP Implementation
+
+**Hours**: 5 hours
+
+**Activities**:
+- ✅ Implemented the base `main.py` server using FastMCP.
+- ✅ Created the Snowflake connection manager with connection pooling.
+- ✅ Built the first tool: `snowflake_query`.
+- ✅ Tested basic connectivity with a "Hello World" query ("SELECT CURRENT_VERSION()").
+
+**Technical Highlights**:
+- Implemented robust error handling to ensure the MCP server doesn't crash on bad SQL syntax.
 
 ---
 
-## Next Session Goals
+## Day 5 - January 19, 2026
 
-1. **Environment Setup**
-   - Install FastMCP and dependencies
-   - Configure Snowflake connection
-   - Test basic MCP server startup
+### 🛠️ Tool Expansion
 
-2. **Core Implementation**
-   - Create main.py with FastMCP server
-   - Implement first Snowflake query tool
-   - Add basic error handling and logging
+**Hours**: 4.5 hours
 
-3. **Testing Foundation**
-   - Set up pytest configuration
-   - Create first unit tests
-   - Establish testing patterns
+**Activities**:
+- ✅ Implemented schema discovery tools:
+    - `snowflake_list_tables`
+    - `snowflake_describe_table`
+- ✅ Refined SQL generation logic.
+- ✅ Added logging throughout the application for easier debugging during Kiro sessions.
 
-**Estimated Time**: 4-6 hours
+---
+
+## Day 6 - January 20, 2026
+
+### 🔒 Security Implementation
+
+**Hours**: 3 hours
+
+**Activities**:
+- ✅ Implemented the **GOLD Schema Only** policy.
+- ✅ Updated tool logic to enforce schema bounds.
+- ✅ Tested access control: Verified that queries to "BRONZE" or "SILVER" schemas are rejected.
+- ✅ Created dummy views (`DAILY_SALES_SUMMARY`, `CUSTOMER_PRODUCT_AFFINITY`) in the GOLD schema for the demo.
+
+**Key Decisions**:
+- **Why Gold Only?**: To simulate a real-world enterprise environment where AI agents are restricted to curated, high-quality data.
+
+---
+
+## Day 7 - January 21, 2026
+
+### 📊 Visualization Prototyping
+
+**Hours**: 5 hours
+
+**Activities**:
+- ✅ Prototype 1: Flask API. (Built a basic server, but realized it added complexity for the user to run two processes).
+- ✅ Prototype 2: Static HTML with Chart.js.
+- ✅ Decision: **Go with Static HTML**. It's cleaner, easier to share, and requires less overhead for the end user.
+- ✅ Wrote `visualize.py` core logic to generate HTML files dynamically.
+
+---
+
+## Day 8 - January 22, 2026
+
+### 🎨 Integration & Refinement
+
+**Hours**: 6 hours
+
+**Activities**:
+- ✅ Created the `create_chart` MCP tool.
+- ✅ Integrated `visualize.py` into the MCP workflow.
+- ✅ Tested the full pipeline: User Prompt -> Kiro -> SQL -> Data -> JSON -> Chart.js HTML.
+- ✅ Added support for multiple chart types (Bar, Line, Pie, Doughnut, Scatter).
+- ✅ Automated the "Open in Browser" functionality.
+
+---
+
+## Day 9 - January 23, 2026
+
+### 📝 Testing, Kiro integration & Documentation
+
+**Hours**: 5 hours
+
+**Activities**:
+- ✅ Final End-to-End testing with Kiro CLI.
+- ✅ Configured custom Kiro prompts (`@prime`, `@plan-feature`).
+- ✅ Wrote the **Demo Video Script**.
+- ✅ Cleaned up the repository (removed temporary testing files).
+- ✅ Finalized **README.md** with clear instructions for judges.
+
+---
+
+## Time Tracking Summary
+
+| Day | Date | Hours | Focus Area |
+|-----|------|-------|------------|
+| 1 | Jan 15 | 3.0h | Inception & Research |
+| 2 | Jan 16 | 3.5h | Setup & Config |
+| 3 | Jan 17 | 4.0h | Architecture |
+| 4 | Jan 18 | 5.0h | Core MCP |
+| 5 | Jan 19 | 4.5h | Tool Expansion |
+| 6 | Jan 20 | 3.0h | Security |
+| 7 | Jan 21 | 5.0h | Viz Prototyping |
+| 8 | Jan 22 | 6.0h | Integration |
+| 9 | Jan 23 | 5.0h | Final Polish |
+| **Total** | | **39.0h** | |
 
 ---
 
 ## Innovation Highlights
 
-- **Integrated Visualization**: Combining MCP protocol with Flask web server
-- **Natural Language Focus**: Gold-layer business queries without SQL knowledge
-- **Hackathon Optimization**: Structured for maximum scoring across all criteria
+1.  **Seamless "Prompt-to-Plot" Workflow**: Removing the friction between asking a data question and seeing a chart.
+2.  **Enterprise-Grade Security Pattern**: Demonstrating how GenAI can be safely deployed using Schema restrictions (GOLD layer).
+3.  **Serverless Visualization**: By generating self-contained HTML files, we eliminate the need for hosting a dashboard server, making the tool lightweight and portable.
 
 ---
 
-*This log will be updated continuously throughout development to track progress, decisions, and learnings.*
-1q1git
+*Development completed January 23, 2026*
