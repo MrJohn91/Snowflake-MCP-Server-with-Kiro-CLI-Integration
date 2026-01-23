@@ -35,6 +35,8 @@ This project implements a custom **MCP Server** that connects Kiro CLI to Snowfl
 
 ## How It Works
 
+![Architecture Diagram](assets/architecture_diagram.png)
+
 Instead of writing SQL, you just ask:
 
 > "Show me sales by category"
