@@ -35,7 +35,7 @@ This project implements a custom **MCP Server** that connects Kiro CLI to Snowfl
 
 ## How It Works
 
-![Architecture Diagram](assets/architecture_diagram.png)
+<img src="assets/architecture_diagram.png" width="600" alt="Architecture Diagram" />
 
 Instead of writing SQL, you just ask:
 
