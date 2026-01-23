@@ -7,13 +7,13 @@
 
 ---
 
-## 🎯 Project Goal
+## Project Goal
 
 To bridge the gap between business questions and data insights by allowing users to query secure Snowflake data using plain English and instantly receive interactive visualizations.
 
 ---
 
-## 🔴 The Problem
+## The Problem
 
 Business users and teams often face friction when trying to get data insights:
 
@@ -23,7 +23,7 @@ Business users and teams often face friction when trying to get data insights:
 
 ---
 
-## ✅ The Solution
+##  The Solution
 
 This project implements a custom **MCP Server** that connects Kiro CLI to Snowflake:
 
@@ -33,7 +33,7 @@ This project implements a custom **MCP Server** that connects Kiro CLI to Snowfl
 
 ---
 
-## 🎬 How It Works
+## How It Works
 
 Instead of writing SQL, you just ask:
 
@@ -81,7 +81,7 @@ uv sync
 
 ---
 
-## 🔧 MCP Tools
+## MCP Tools
 
 | Tool | What It Does |
 |------|--------------|
@@ -92,7 +92,7 @@ uv sync
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ├── src/
@@ -115,7 +115,7 @@ uv sync
 
 ---
 
-## 🔐 Mock Mode (How It Works)
+##  Mock Mode (How It Works)
 
 When you don't have Snowflake credentials (no `.env` file), the server automatically:
 
@@ -132,13 +132,13 @@ This lets you test the full workflow without needing database access.
 
 ---
 
-## ✨ Acknowledgments
+## Acknowledgments
 
 This project used the [MCP Skill Builder](skills/mcp-builder-skill.md) from Anthropic to ensure high-quality, compliant MCP server implementation.
 
 ---
 
-## ❓ Troubleshooting
+## Troubleshooting
 
 **Kiro doesn't see the MCP server?**
 - Make sure you launched Kiro from the project root folder (where `.kiro` exists)
@@ -153,6 +153,6 @@ This project used the [MCP Skill Builder](skills/mcp-builder-skill.md) from Anth
 
 ---
 
-## 🏆 Built For
+## Built For
 
 Dynamous Kiro Hackathon 2026 - Demonstrating how MCP servers can bridge natural language and enterprise data systems.
