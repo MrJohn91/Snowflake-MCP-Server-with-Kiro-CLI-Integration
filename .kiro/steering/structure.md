@@ -6,39 +6,33 @@ snowflake-mcp-server/
 ├── .kiro/                          # Kiro CLI configuration
 │   ├── steering/                   # Project steering documents
 │   ├── prompts/                    # Custom Kiro workflow prompts
-│   └── documentation/              # Additional project docs
-├── app/                            # Main application code
+│   └── settings/                   # MCP settings
+├── charts/                         # Output directory for generated HTML charts
+├── skills/                         # Best practice guides used by the AI Agent
+│   └── mcp-builder-skill.md
+├── src/                            # Main application code
 │   ├── __init__.py
-│   ├── config.py                   # Configuration management
-│   ├── common.py                   # Shared component registration (DRY)
-│   ├── main.py                     # MCP server entry point
-│   ├── tools/                      # MCP tool implementations
-│   │   ├── __init__.py
-│   │   ├── snowflake_tools.py      # Core Snowflake query tools
-│   │   └── visualization_tools.py  # Chart generation tools
-│   ├── resources/                  # MCP resource implementations
-│   │   ├── __init__.py
-│   │   └── data_resources.py       # Data schema and metadata resources
-│   ├── prompts/                    # MCP prompt templates
-│   │   ├── __init__.py
-│   │   └── query_prompts.py        # Natural language query helpers
-│   └── flask_app/                  # Flask visualization server
+│   ├── config.py                   # Configuration & Mock Mode logic
+│   ├── main.py                     # MCP server entry point & tool wrappers
+│   ├── mock_data.py                # Simulated data for testing
+│   ├── visualize.py                # Serverless Chart.js generation logic
+│   └── tools/                      # Core business logic
 │       ├── __init__.py
-│       ├── app.py                  # Flask application
-│       ├── routes.py               # Chart generation endpoints
-│       └── templates/              # HTML templates for charts
+│       └── snowflake_tools.py      # Snowflake connectivity & query logic
 ├── tests/                          # Test suite
 │   ├── __init__.py
-│   ├── conftest.py                 # Test fixtures and configuration
-│   ├── test_tools.py               # MCP tool tests
-│   ├── test_resources.py           # Resource tests
-│   └── test_integration.py         # End-to-end tests
+│   ├── test_cli_mock.py            # Automated end-to-end testing (Mock Mode)
+│   ├── test_manual.py              # Interactive test runner
+│   ├── test_tools.py               # Unit tests for tools
+│   └── test_integration.py         # Integration tests
 ├── .env.example                    # Environment variable template
 ├── .env                            # Actual environment variables (gitignored)
-├── requirements.txt                # Python dependencies
-├── README.md                       # Project documentation
+├── .gitignore                      # Git ignore patterns
 ├── DEVLOG.md                       # Development timeline and decisions
-└── .gitignore                      # Git ignore patterns
+├── README.md                       # Project documentation
+├── VIDEO_SCRIPT.md                 # Demo video script
+├── pyproject.toml                  # Python package configuration (uv)
+└── uv.lock                         # Dependency lock file
 ```
 
 ## File Naming Conventions
@@ -46,39 +40,26 @@ snowflake-mcp-server/
 - Use descriptive names that indicate functionality
 - Prefix test files with `test_`
 - Use `.md` extension for all documentation
-- Environment files use `.env` prefix
 
 ## Module Organization
-- **app/tools/**: Individual MCP tools, each in separate files
-- **app/resources/**: MCP resources grouped by data type
-- **app/prompts/**: Reusable prompt templates for query assistance
-- **app/flask_app/**: Complete Flask application for visualizations
-- **tests/**: Mirror the app structure for organized testing
+- **src/main.py**: Entry point that registers MCP tools.
+- **src/tools/**: Contains raw business logic (Snowflake/Mock).
+- **src/visualize.py**: Pure function module for generating HTML.
+- **src/mock_data.py**: Static data dictionaries for simulation.
+- **charts/**: Transient output folder (ignored by git).
 
 ## Configuration Files
-- **.env**: Environment variables (Snowflake credentials, Flask config)
-- **.kiro/**: Kiro CLI specific configuration and prompts
-- **requirements.txt**: Python package dependencies
-- **.gitignore**: Exclude .env, __pycache__, and build artifacts
+- **pyproject.toml**: Main project config & dependencies (managed by `uv`).
+- **.env**: Secrets (Snowflake credentials).
+- **.kiro/settings/mcp.json**: Kiro MCP configuration (portable).
 
 ## Documentation Structure
-- **README.md**: Project overview, setup instructions, usage examples
-- **DEVLOG.md**: Development timeline, decisions, challenges, solutions
-- **.kiro/steering/**: Product, technical, and structural documentation
-- **.kiro/documentation/**: Additional project-specific documentation
-
-## Asset Organization
-- **app/flask_app/templates/**: HTML templates for chart rendering
-- **app/flask_app/static/**: CSS, JavaScript, and static assets (if needed)
-- Chart data passed dynamically, no static chart files stored
+- **README.md**: User-facing "Start Here" guide.
+- **DEVLOG.md**: Chronological development log.
+- **VIDEO_SCRIPT.md**: Plan for the demo video.
+- **.kiro/steering/**: AI context documents (Product, Tech, Structure).
 
 ## Build Artifacts
-- **__pycache__/**: Python bytecode (gitignored)
-- **.pytest_cache/**: Test cache (gitignored)
-- **dist/**: Distribution packages (if building for distribution)
-
-## Environment-Specific Files
-- **.env.example**: Template showing required environment variables
-- **.env**: Local development environment variables
-- **Production**: Environment variables managed by deployment platform
-- **Testing**: Separate test environment configuration in conftest.py
+- **charts/**: Generated HTML files.
+- **.venv/**: Virtual environment (created by `uv sync`).
+- **__pycache__/**: Python bytecode (gitignored).
