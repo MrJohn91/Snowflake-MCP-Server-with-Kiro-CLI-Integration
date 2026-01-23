@@ -31,17 +31,18 @@
 
 ### 🏗️ Setup & Configuration
 
-**Hours**: 3.5 hours
+**Hours**: 4 hours
 
 **Activities**:
 - ✅ Initialized git repository from the hackathon template.
 - ✅ Set up the Python environment using `uv`.
-- ✅ Configured Snowflake trial account for testing.
+- ✅ Configured Snowflake account for testing.
 - ✅ Created `.env` structure for secure credential management.
 - ✅ Defined the project directory structure.
+- ✅ Initial dependency management and environment validation.
 
 **Challenges**:
-- ensuring `uv` works correctly with the specific Python version required by Kiro dependencies.
+- Ensuring `uv` works correctly with the specific Python version required by Kiro dependencies.
 
 ---
 
@@ -56,6 +57,7 @@
 - ✅ Designed the "Security-First" architecture (restricting access to specific layers).
 - ✅ Decided on the transport mechanism: `stdio` (Standard Input/Output) as it's the native way Kiro communicates with MCP servers.
 - ✅ Planned the visualization strategy: evaluated Flask Server vs. Static HTML generation.
+- ✅ Created initial project structure and module organization.
 
 ---
 
@@ -63,13 +65,15 @@
 
 ### ⚙️ Core MCP Implementation
 
-**Hours**: 5 hours
+**Hours**: 4 hours
 
 **Activities**:
 - ✅ Implemented the base `main.py` server using FastMCP.
 - ✅ Created the Snowflake connection manager with connection pooling.
 - ✅ Built the first tool: `snowflake_query`.
 - ✅ Tested basic connectivity with a "Hello World" query ("SELECT CURRENT_VERSION()").
+- ✅ Added comprehensive error handling and logging.
+- ✅ Initial MCP protocol compliance testing.
 
 **Technical Highlights**:
 - Implemented robust error handling to ensure the MCP server doesn't crash on bad SQL syntax.
@@ -80,7 +84,7 @@
 
 ### 🛠️ Tool Expansion
 
-**Hours**: 4.5 hours
+**Hours**: 4 hours
 
 **Activities**:
 - ✅ Implemented schema discovery tools:
@@ -88,6 +92,7 @@
     - `snowflake_describe_table`
 - ✅ Refined SQL generation logic.
 - ✅ Added logging throughout the application for easier debugging during Kiro sessions.
+- ✅ Enhanced tool parameter validation and type safety.
 
 ---
 
@@ -112,13 +117,15 @@
 
 ### 📊 Visualization Prototyping
 
-**Hours**: 5 hours
+**Hours**: 4 hours
 
 **Activities**:
 - ✅ Prototype 1: Flask API. (Built a basic server, but realized it added complexity for the user to run two processes).
 - ✅ Prototype 2: Static HTML with Chart.js.
 - ✅ Decision: **Go with Static HTML**. It's cleaner, easier to share, and requires less overhead for the end user.
 - ✅ Wrote `visualize.py` core logic to generate HTML files dynamically.
+- ✅ Tested multiple chart types and responsive design.
+- ✅ Implemented browser auto-launch functionality.
 
 ---
 
@@ -126,7 +133,7 @@
 
 ### 🎨 Integration & Refinement
 
-**Hours**: 6 hours
+**Hours**: 4 hours
 
 **Activities**:
 - ✅ Created the `create_chart` MCP tool.
@@ -134,21 +141,23 @@
 - ✅ Tested the full pipeline: User Prompt -> Kiro -> SQL -> Data -> JSON -> Chart.js HTML.
 - ✅ Added support for multiple chart types (Bar, Line, Pie, Doughnut, Scatter).
 - ✅ Automated the "Open in Browser" functionality.
+- ✅ Performance optimization and error handling improvements.
 
 ---
 
 ## Day 9 - January 23, 2026
 
-### 📝 Testing, Kiro integration & Documentation
+### 📝 Final Polish & Mock Mode
 
-**Hours**: 5 hours
+**Hours**: 4 hours
 
 **Activities**:
-- ✅ Final End-to-End testing with Kiro CLI.
-- ✅ Configured custom Kiro prompts (`@prime`, `@plan-feature`).
-- ✅ Wrote the **Demo Video Script**.
-- ✅ Cleaned up the repository (removed temporary testing files).
-- ✅ Finalized **README.md** with clear instructions for judges.
+- ✅ **Refactored structure**: Renamed `app` to `src` for better standard Python packaging.
+- ✅ **Implemented Mock Mode**: Added `mock_data.py` and logic to allow testing without live Snowflake credentials.
+- ✅ **Enhanced Documentation**: Added a professional "Architecture Diagram" and "Wide Banner" to the README.
+- ✅ **Finalized Kiro Integration**: Tuned steering documents (`product.md`, `tech.md`) to perfectly match the code architecture.
+- ✅ **Automated Testing**: Created `test_cli_mock.py` to verify the full flow in CI/CD environments.
+- ✅ Finalized **README.md** with clear instructions and updated description.
 
 ---
 
@@ -157,15 +166,15 @@
 | Day | Date | Hours | Focus Area |
 |-----|------|-------|------------|
 | 1 | Jan 15 | 3.0h | Inception & Research |
-| 2 | Jan 16 | 3.5h | Setup & Config |
+| 2 | Jan 16 | 4.0h | Setup & Config |
 | 3 | Jan 17 | 4.0h | Architecture |
-| 4 | Jan 18 | 5.0h | Core MCP |
-| 5 | Jan 19 | 4.5h | Tool Expansion |
+| 4 | Jan 18 | 4.0h | Core MCP |
+| 5 | Jan 19 | 4.0h | Tool Expansion |
 | 6 | Jan 20 | 3.0h | Security |
-| 7 | Jan 21 | 5.0h | Viz Prototyping |
-| 8 | Jan 22 | 6.0h | Integration |
-| 9 | Jan 23 | 5.0h | Final Polish |
-| **Total** | | **39.0h** | |
+| 7 | Jan 21 | 4.0h | Viz Prototyping |
+| 8 | Jan 22 | 4.0h | Integration |
+| 9 | Jan 23 | 4.0h | Final Polish |
+| **Total** | | **34.0h** | |
 
 ---
 
